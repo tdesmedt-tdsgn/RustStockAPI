@@ -1,5 +1,5 @@
 # Use the official Rust image as the base image
-FROM rust:1.57 as builder
+FROM rust:1.67 as builder
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -15,7 +15,7 @@ FROM debian:buster-slim
 
 # Install necessary packages for runtime
 RUN apt-get update && \
-    apt-get install -y ca-certificates tzdata && \
+    apt-get install -y ca-certificates tzdata libssl1.1 && \
     rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
